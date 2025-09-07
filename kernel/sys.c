@@ -1968,6 +1968,17 @@ SYSCALL_DEFINE5(prctl, int, option, unsigned long, arg2, unsigned long, arg3,
 			me->pdeath_signal = arg2;
 			error = 0;
 			break;
+		case PR_SET_NO_NEW_PRIVS:
+            if (arg2 != 0) {
+                error = -EINVAL;
+                break;
+            }
+            me->no_new_privs = 1;
+            error = 0;
+            break;
+		case PR_GET_NO_NEW_PRIVS:
+            error = me->no_new_privs;
+            break;
 		case PR_GET_PDEATHSIG:
 			error = put_user(me->pdeath_signal, (int __user *)arg2);
 			break;
