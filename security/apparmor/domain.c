@@ -30,6 +30,15 @@
 #include "include/path.h"
 #include "include/policy.h"
 
+/* 
+ * Checking no_new_privs flag.
+ * This must stay in kernel-only code, not exported headers.
+ */
+static inline int task_no_new_privs(struct task_struct *p)
+{
+    return p->no_new_privs;
+}
+
 /**
  * aa_free_domain_entries - free entries in a domain table
  * @domain: the domain table to free  (MAYBE NULL)
