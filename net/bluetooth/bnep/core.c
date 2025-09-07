@@ -54,6 +54,15 @@
 
 #include "bnep.h"
 
+#include <net/bluetooth/bluetooth.h> 
+
+#ifndef HAVE_L2CAP_IS_SOCKET
+static inline int l2cap_is_socket(struct socket *sock)
+{
+    return sock && sock->sk && sock->sk->sk_protocol == BTPROTO_L2CAP;
+}
+#endif
+
 #define VERSION "1.3"
 
 static bool compress_src = true;
