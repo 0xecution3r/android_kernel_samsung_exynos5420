@@ -20,7 +20,7 @@
 #define CLONE_CHILD_CLEARTID	0x00200000	/* clear the TID in the child */
 #define CLONE_DETACHED		0x00400000	/* Unused, ignored */
 #define CLONE_UNTRACED		0x00800000	/* set if the tracing process can't force CLONE_PTRACE on this clone */
-#define CLONE_CHILD_SETTID	0x01000000	/* sstatic inline bool task_no_new_privs(struct task_struct *p)
+#define CLONE_CHILD_SETTID	0x01000000	/* static inline bool task_no_new_privs(struct task_struct *p)
 {
     return p->no_new_privs;
 }
@@ -2916,10 +2916,4 @@ static inline unsigned long rlimit_max(unsigned int limit)
 }
 
 #endif /* __KERNEL__ */
-
-static inline bool task_no_new_privs(struct task_struct *p)
-{
-    return p->no_new_privs;
-}
-
 #endif
