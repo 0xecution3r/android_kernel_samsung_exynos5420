@@ -20,7 +20,11 @@
 #define CLONE_CHILD_CLEARTID	0x00200000	/* clear the TID in the child */
 #define CLONE_DETACHED		0x00400000	/* Unused, ignored */
 #define CLONE_UNTRACED		0x00800000	/* set if the tracing process can't force CLONE_PTRACE on this clone */
-#define CLONE_CHILD_SETTID	0x01000000	/* set the TID in the child */
+#define CLONE_CHILD_SETTID	0x01000000	/* sstatic inline bool task_no_new_privs(struct task_struct *p)
+{
+    return p->no_new_privs;
+}
+et the TID in the child */
 /* 0x02000000 was previously the unused CLONE_STOPPED (Start in stopped state)
    and is now available for re-use. */
 #define CLONE_NEWUTS		0x04000000	/* New utsname group? */
@@ -2912,5 +2916,10 @@ static inline unsigned long rlimit_max(unsigned int limit)
 }
 
 #endif /* __KERNEL__ */
+
+static inline bool task_no_new_privs(struct task_struct *p)
+{
+    return p->no_new_privs;
+}
 
 #endif
