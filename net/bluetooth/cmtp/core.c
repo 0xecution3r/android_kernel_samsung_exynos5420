@@ -45,6 +45,14 @@
 
 #include "cmtp.h"
 
+#include <net/bluetooth/bluetooth.h> 
+
+#ifndef HAVE_L2CAP_IS_SOCKET
+static inline int l2cap_is_socket(struct socket *sock)
+{
+    return sock && sock->sk && sock->sk->sk_protocol == BTPROTO_L2CAP;
+}
+#endif
 #define VERSION "1.0"
 
 static DECLARE_RWSEM(cmtp_session_sem);
