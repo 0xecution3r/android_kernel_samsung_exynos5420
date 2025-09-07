@@ -1,8 +1,6 @@
 #ifndef _LINUX_POSIX_TYPES_H
 #define _LINUX_POSIX_TYPES_H
 
-#include <linux/stddef.h>
-
 /*
  * This allows for 1024 file descriptors: if NR_OPEN is ever grown
  * beyond that you'll have to change this too. But 1024 fd's seem to be
@@ -33,5 +31,6 @@ typedef int __kernel_key_t;
 typedef int __kernel_mqd_t;
 
 #include <asm/posix_types.h>
+#include <linux/stddef.h>
 
 #endif /* _LINUX_POSIX_TYPES_H */
